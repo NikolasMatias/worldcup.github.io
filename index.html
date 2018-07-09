@@ -15,8 +15,34 @@
     <title>World Cup Webservice</title>
 </head>
 <body>
-    <div id='worldcup' class="worldcup">
-        {{group_teams}}
+    <div id='worldcup' class="worldcup" v-cloak>
+        <div class="container-fluid">
+            <div class="">
+
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4" v-for="group_team in group_teams">
+                    <h1>{{group_team.letter}}</h1>
+                    <table class="table-striped table-group-team">
+                        <tr>
+                            <th>País</th>
+                            <th>Vitórias</th>
+                            <th>Empates</th>
+                            <th>Derrotas</th>
+                            <th>Pontos</th>
+                        </tr>
+                        <tr class="table-ordered-team" v-for="ordered_team in group_team.ordered_teams"
+                            @click="getMatchesCountry(ordered_team.fifa_code)">
+                            <td>{{ordered_team.country}}</td>
+                            <td>{{ordered_team.wins}}</td>
+                            <td>{{ordered_team.draws}}</td>
+                            <td>{{ordered_team.losses}}</td>
+                            <td>{{ordered_team.points}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
     
     
